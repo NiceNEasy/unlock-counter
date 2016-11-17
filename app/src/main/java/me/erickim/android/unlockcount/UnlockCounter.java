@@ -12,14 +12,22 @@ public class UnlockCounter {
     //field
     TextView textView;
 
+
     //contructor
     public UnlockCounter(TextView textView){
         this.textView = textView;
     }
 
-
-    // method : increment by 1
-    public void increment(String val) {
-        textView.setText(val);
+    // method : add count by 1
+    public void addCount() {
+        String currentNumber = "0";
+        currentNumber = textView.getText().toString();
+        int result = Integer.parseInt(currentNumber);
+        result += 1;
+        String clickedNumber = Integer.toString(result);
+        textView.setText(clickedNumber);
     }
+
+
+
 }

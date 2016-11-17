@@ -26,9 +26,9 @@
         android:text="Unlock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/numberCount"
-        android:layout_alignLeft="@+id/dayInfo"
-        android:layout_alignStart="@+id/dayInfo"
+        android:layout_alignTop="@+id/numberDisplay"
+        android:layout_alignLeft="@+id/display_date"
+        android:layout_alignStart="@+id/display_date"
         android:layout_marginLeft="25dp"
         android:layout_marginStart="25dp"
         android:id="@+id/textView6"
@@ -50,7 +50,7 @@
         android:text="Share"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/dayInfo"
+        android:layout_alignBottom="@+id/display_date"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:id="@+id/button2"
@@ -60,8 +60,8 @@
         android:text="yesterday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button3"
-        android:layout_above="@+id/numberCount"
+        android:id="@+id/bt_previous"
+        android:layout_above="@+id/numberDisplay"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:textSize="10sp" />
@@ -106,8 +106,8 @@
         android:textSize="18sp"
         android:layout_alignBaseline="@+id/textView11"
         android:layout_alignBottom="@+id/textView11"
-        android:layout_toRightOf="@+id/dayInfo"
-        android:layout_toEndOf="@+id/dayInfo" />
+        android:layout_toRightOf="@+id/display_date"
+        android:layout_toEndOf="@+id/display_date" />
 
     <TextView
         android:text="minute"
@@ -117,8 +117,8 @@
         android:textSize="18sp"
         android:layout_alignBaseline="@+id/textView10"
         android:layout_alignBottom="@+id/textView10"
-        android:layout_toRightOf="@+id/numberCount"
-        android:layout_toEndOf="@+id/numberCount" />
+        android:layout_toRightOf="@+id/numberDisplay"
+        android:layout_toEndOf="@+id/numberDisplay" />
 
     <TextView
         android:text="hour"
@@ -129,28 +129,28 @@
         android:textSize="18sp"
         android:layout_marginRight="13dp"
         android:layout_marginEnd="13dp"
-        android:layout_below="@+id/numberCount"
+        android:layout_below="@+id/numberDisplay"
         android:layout_toLeftOf="@+id/textView11"
         android:layout_toStartOf="@+id/textView11" />
 
     <TextView
-        android:text="300"
+        android:text="0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/numberCount"
+        android:id="@+id/numberDisplay"
         android:textSize="18sp"
         android:layout_marginTop="23dp"
-        android:layout_below="@+id/centerIcon"
-        android:layout_toRightOf="@+id/button3"
-        android:layout_toEndOf="@+id/button3" />
+        android:layout_below="@+id/bt_centerIcon"
+        android:layout_toRightOf="@+id/bt_previous"
+        android:layout_toEndOf="@+id/bt_previous" />
 
     <Button
         android:text="Tomorrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button4"
+        android:id="@+id/bt_next"
         android:textSize="10sp"
-        android:layout_alignBottom="@+id/centerIcon"
+        android:layout_alignBottom="@+id/bt_centerIcon"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -159,7 +159,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="67dp"
-        android:id="@+id/dayInfo"
+        android:id="@+id/display_date"
         android:textSize="20sp"
         android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true" />
@@ -168,7 +168,7 @@
         android:text="[ICON] Cellphone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/centerIcon"
+        android:id="@+id/bt_centerIcon"
         android:textSize="30sp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />

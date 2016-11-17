@@ -16,13 +16,26 @@ public class ButtonListener implements View.OnClickListener {
         this.UC = UC;
     }
 
+    // count number button
     @Override
     public void onClick(View v){
         switch (v.getId()){
-            case R.id.centerIcon:
-                UC.increment("1");
+            case R.id.bt_centerIcon:
+                UC.addCount();
                 break;
+            /*case R.id.bt_previous: // go to previous day button
+                *//*TODO : Move to the previous day view*//*
+                break;
+            case R.id.bt_previous:  // go to next day button
+                *//*TODO : Move to the next day view*//*
+                break;*/
             default:
         }
     }
+
+
+
+
+
+
 }
