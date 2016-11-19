@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
         Button nextDay = (Button) findViewById(R.id.bt_next);           // button to show next day count
         Button share = (Button) findViewById(R.id.bt_share);            // button to share in facebook
 
+
+
         //Button listener object
         ButtonListener bl = new ButtonListener(UC);
 

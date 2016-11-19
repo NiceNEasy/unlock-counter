@@ -28,7 +28,8 @@ public class UnlockCounter {
     }
 
     // method : share in facebook
-    //public void share
+//    public void share() {
+//    }
 
 
 }
