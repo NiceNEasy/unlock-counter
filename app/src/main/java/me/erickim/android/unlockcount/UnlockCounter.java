@@ -12,7 +12,6 @@ public class UnlockCounter {
     //field
     TextView textView;
 
-
     //contructor
     public UnlockCounter(TextView textView){
         this.textView = textView;
@@ -28,6 +27,8 @@ public class UnlockCounter {
         textView.setText(clickedNumber);
     }
 
+    // method : share in facebook
+    //public void share
 
 
 }

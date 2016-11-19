@@ -14,21 +14,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        UnlockCounter UC = new UnlockCounter((TextView) findViewById(R.id.numberDisplay));
-
+        UnlockCounter UC = new UnlockCounter((TextView) findViewById(R.id.display_number));
+        UnlockCounter DisplayDate = new UnlockCounter((TextView) findViewById(R.id.display_date));
+        UnlockCounter DisplayTimeUsed = new UnlockCounter((TextView) findViewById(R.id.display_usedTime));
 
         // declare & initiz
-        Button centerIcon = (Button) findViewById(R.id.bt_centerIcon); // Click count button
-        Button previousDay = (Button) findViewById(R.id.bt_previous); // button to show previous day count
-        Button nextDay = (Button) findViewById(R.id.bt_next); // button to show next day count
+        Button centerIcon = (Button) findViewById(R.id.bt_centerIcon);  // button to count number
+        Button previousDay = (Button) findViewById(R.id.bt_previous);   // button to show previous day count
+        Button nextDay = (Button) findViewById(R.id.bt_next);           // button to show next day count
+        Button share = (Button) findViewById(R.id.bt_share);            // button to share in facebook
 
-        //Button listen object
+        //Button listener object
         ButtonListener bl = new ButtonListener(UC);
 
         // center button clicked
         centerIcon.setOnClickListener(bl);
         // number displayer display number when "cetnerIcon" is clicked
-
 
         // previous button clicked
         previousDay.setOnClickListener(bl);
@@ -36,5 +37,7 @@ public class MainActivity extends AppCompatActivity {
         // next button clicked
         nextDay.setOnClickListener(bl);
 
+        // share button clicked
+        share.setOnClickListener(bl);
+        }
     }
-}
