@@ -1,7 +1,9 @@
 package me.erickim.android.unlockcount;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -24,8 +26,7 @@ public class MainActivity extends AppCompatActivity {
         Button nextDay = (Button) findViewById(R.id.bt_next);           // button to show next day count
         Button share = (Button) findViewById(R.id.bt_share);            // button to share in facebook
 
-
-
+        
         //Button listener object
         ButtonListener bl = new ButtonListener(UC);
 
@@ -41,5 +42,12 @@ public class MainActivity extends AppCompatActivity {
 
         // share button clicked
         share.setOnClickListener(bl);
-        }
     }
+
+    // move to stat activity
+    public void Action (View v){
+        Intent i = new Intent(MainActivity.this, Statistic.class);
+        startActivity(i);
+    }
+
+}
