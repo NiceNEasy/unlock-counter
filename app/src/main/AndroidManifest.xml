@@ -17,7 +17,8 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".Statistic" />
-        <activity android:name=".Friends"></activity>
+        <activity android:name=".Friends" />
+        <activity android:name=".Account"></activity>
     </application>
 
 </manifest>

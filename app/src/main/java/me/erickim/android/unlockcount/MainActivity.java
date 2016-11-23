@@ -45,9 +45,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // move to stat activity
-    public void Action (View v){
+    public void movetToStatisticActivity (View v){
         Intent i = new Intent(MainActivity.this, Statistic.class);
         startActivity(i);
     }
+
+    // move to friends activity
+    public void moveToFriendsActivity (View v){
+        Intent j = new Intent(MainActivity.this, Friends.class);
+        startActivity(j);
+    }
+
+    // move to account activity
+    public void moveToAccountActivity (View v){
+        Intent k = new Intent(MainActivity.this, Account.class);
+        startActivity(k);
+    }
+
 
 }

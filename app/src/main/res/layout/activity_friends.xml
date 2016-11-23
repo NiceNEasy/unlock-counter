@@ -31,14 +31,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 
-            <ImageButton
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@android:drawable/toast_frame"
-                android:id="@+id/bt_profileImage" />
+                app:srcCompat="@drawable/wi"
+                android:id="@+id/imageView2" />
 
             <TextView
-                android:text="profileName"
+                android:text="Wilson"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/profileName" />
@@ -55,11 +55,23 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/jtjt"
+                android:id="@+id/imageView" />
+
             <TextView
-                android:text="TextView"
+                android:text="jt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView5" />
+
+            <TextView
+                android:text="count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView15" />
         </TableRow>
 
         <TableRow
