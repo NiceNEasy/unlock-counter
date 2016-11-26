@@ -11,6 +11,9 @@ public class MainActivity extends AppCompatActivity {
 
     // comment test
 
+    private int mergeInterval = 3600000; // Every hour
+    private Handler mergeHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,5 +65,34 @@ public class MainActivity extends AppCompatActivity {
         startActivity(k);
     }
 
+    public void insertDataToDaily() {
+        // TODO: gets triggered when phone gets locked/unlocked
+    }
 
+    public void mergeDataToTotal() {
+        // TODO: concludes data on Daily to Total
+    }
+
+    Runnable mergeData = new Runable() {
+        @Override
+        public void run() {
+            try {
+                mergeDataToTotal();
+            } catch (Exception e) {
+                // Possible exceptions:
+                // 1. User is online though midnight
+                // 2. Day has not concluded --> 
+            } finally {
+                mergeHandler.postDelayed(mergeData, mergeInterval);
+            }
+        }
+    }
+
+    void startMerge() {
+        mergeData.run();
+    }
+
+    void stopMerge() {
+        mergeHandler.removeCallbacks(mergeData);
+    }
 }
