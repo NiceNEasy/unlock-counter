@@ -2,6 +2,7 @@ package me.erickim.android.unlockcount;
 
 import android.content.Intent;
 import android.os.Bundle;
+import andoird.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         // TODO: concludes data on Daily to Total
     }
 
-    Runnable mergeData = new Runable() {
+    Runnable mergeData = new Runnable() {
         @Override
         public void run() {
             try {
@@ -86,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 mergeHandler.postDelayed(mergeData, mergeInterval);
             }
         }
-    }
+    };
 
     void startMerge() {
         mergeData.run();
