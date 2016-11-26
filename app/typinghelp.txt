@@ -1,0 +1,15 @@
+private static final String 
+
+private static final String DATABASE_NAME = “unlockCounter.db”;
+private static final int DATABASE_VERSION = 1;
+
+private static final String TABLE_MAIN = "main";
+private static final String COLUMN_ID = "userId";
+private static final String COLUMN_COUNT = "count";
+private static final int COLUMN_STARTTIME = "startTime";
+private static final String COLUMN_ENDTIME = "endTime";
+private static final String COLUMN_USEDTIME = "usedTime";
+
+private static final String TABLE_CREATE =
+
+

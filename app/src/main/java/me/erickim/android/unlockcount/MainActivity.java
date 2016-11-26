@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         // center button clicked
         centerIcon.setOnClickListener(bl);
-        // number displayer display number when "cetnerIcon" is clicked
+        // number displayer display number when "centerIcon" is clicked
 
         // previous button clicked
         previousDay.setOnClickListener(bl);
