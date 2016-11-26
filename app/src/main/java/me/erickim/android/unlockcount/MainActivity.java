@@ -1,11 +1,21 @@
 package me.erickim.android.unlockcount;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import db.DailyLog;
+import db.TotalLog;
+
+import static android.icu.text.MessagePattern.ArgType.SELECT;
+import static me.erickim.android.unlockcount.R.id.count;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
 
         // share button clicked
         share.setOnClickListener(bl);
+
+        DailyLog dailyLog = new DailyLog(null); //TODO: fix parameter
+        TotalLog totalLog = new TotalLog(null); //TODO: fix parameter
+
     }
 
     // move to stat activity
@@ -69,11 +83,27 @@ public class MainActivity extends AppCompatActivity {
         // TODO: gets triggered when phone gets locked/unlocked
     }
 
-    public void mergeDataToTotal() {
+    public void mergeDataToTotal(DailyLog daily, TotalLog total) {
         // TODO: concludes data on Daily to Total
+        SQLiteDatabase db = daily.getReadableDatabase();
+
+        // SQL Query to get tablename(dailylog) from database (Dailylog)
+        Cursor c = db.rawQuery("SELECT name FROM dailyLog.db WHERE type='table'", null);
+        String date = c.getString(0);
+
+        // SQL Query to count how many row
+        Cursor mCount = db.rawQuery("SELECT COUNT(*) FROM table_name", null);
+        int count = mCount.getInt(0);
+
+        // SQL Query to get each duration of each session
+
+        // SQL Query to calculate total duration
+
+
+
     }
 
-    Runnable mergeData = new Runable() {
+    Runnable mergeData = new Runnable() {
         @Override
         public void run() {
             try {
@@ -81,12 +111,12 @@ public class MainActivity extends AppCompatActivity {
             } catch (Exception e) {
                 // Possible exceptions:
                 // 1. User is online though midnight
-                // 2. Day has not concluded --> 
+                // 2. Day has not concluded -->
             } finally {
                 mergeHandler.postDelayed(mergeData, mergeInterval);
             }
         }
-    }
+    };
 
     void startMerge() {
         mergeData.run();

@@ -16,7 +16,7 @@ public class DailyLog extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "dailyLog.db";
     private static final int DATABASE_VERSION = 1;
 
-    private static final String TABLE_DAILYLOG = "dailyLog";
+    private static final String TABLE_DAILYLOG = "dailyLog"; // Change to date in MM/DD/YYYY format
     private static final String TABLE_TOTALLOG = "totalLog";
 
     /* Table 1 : Daily log */
