@@ -9,13 +9,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import android.text.format.Time;
+
+import java.lang.Object.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 import db.DailyLog;
 import db.TotalLog;
 
-import static android.icu.text.MessagePattern.ArgType.SELECT;
+import static android.R.attr.duration;
+import static android.R.attr.start;
 import static me.erickim.android.unlockcount.R.id.count;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -83,22 +92,56 @@ public class MainActivity extends AppCompatActivity {
         // TODO: gets triggered when phone gets locked/unlocked
     }
 
-    public void mergeDataToTotal(DailyLog daily, TotalLog total) {
+    public void mergeDataToTotal(DailyLog daily, TotalLog total) throws InvalidSessionException {
         // TODO: concludes data on Daily to Total
         SQLiteDatabase db = daily.getReadableDatabase();
 
-        // SQL Query to get tablename(dailylog) from database (Dailylog)
-        Cursor c = db.rawQuery("SELECT name FROM dailyLog.db WHERE type='table'", null);
-        String date = c.getString(0);
-
-        // SQL Query to count how many row
-        Cursor mCount = db.rawQuery("SELECT COUNT(*) FROM table_name", null);
-        int count = mCount.getInt(0);
+        // SQL Query to count number(totallog) of unlock session
+        Cursor mRows = db.rawQuery("SELECT COUNT(*) FROM totalLog", null);
+        int rows = mRows.getInt(0);
+        Date[] dates_on = new Date[rows];
+        Date[] dates_off = new Date[rows];
 
         // SQL Query to get each duration of each session
+        Cursor sessionDurOnTime = db.rawQuery("SELECT onTime FROM dailyLog", null);
+        Cursor sessionDurOffTime = db.rawQuery("SELECT offTime FROM dailyLog", null);
 
-        // SQL Query to calculate total duration
+        SimpleDateFormat iso8601Format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        for (int i = 0; i < rows; i++) {
+            String onTime = sessionDurOnTime.getString(i);
+            String offTime = sessionDurOffTime.getString(i);
+            Date date_on  = null;
+            Date date_off = null;
+            if (onTime != null) {
+                try {
+                    date_on = iso8601Format.parse(onTime);
+                    dates_on[i] = date_on;
+                } catch (ParseException e) {
+                    date_on = null;
+                }
+            }
 
+            if (offTime != null) {
+                try {
+                    date_off = iso8601Format.parse(offTime);
+                    dates_off[i] = date_off;
+                } catch (ParseException e) {
+                    date_off = null;
+                }
+            } else {
+                dates_on[i] = null;
+                throw new InvalidSessionException();
+            }
+
+            // Calculate single duration
+            if (date_on == null || date_off == null){
+                return;
+            }
+            long difference = date_off.getTime() - date_on.getTime();
+            System.out.println(difference/1000);
+        }
+
+        // SQL Query to calculate total duration per day -> sum of each sessions
 
 
     }
@@ -110,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
                 mergeDataToTotal();
             } catch (Exception e) {
                 // Possible exceptions:
-                // 1. User is online though midnight
+                // 1. User is online though midnight -> start logging in the next dailylog
                 // 2. Day has not concluded -->
             } finally {
                 mergeHandler.postDelayed(mergeData, mergeInterval);
