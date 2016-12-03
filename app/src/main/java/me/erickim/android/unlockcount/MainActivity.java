@@ -1,5 +1,6 @@
 package me.erickim.android.unlockcount;
 
+
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -17,6 +18,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
+
 
 import db.DailyLog;
 import db.TotalLog;
@@ -106,7 +110,13 @@ public class MainActivity extends AppCompatActivity {
         Cursor sessionDurOnTime = db.rawQuery("SELECT onTime FROM dailyLog", null);
         Cursor sessionDurOffTime = db.rawQuery("SELECT offTime FROM dailyLog", null);
 
-        SimpleDateFormat iso8601Format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        // obtain time, date in current timezone based on location
+        GregorianCalendar calendar = new GregorianCalendar();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd aa HH:mm:ss");
+        dateFormat.setTimeZone(TimeZone.getTimeZone("Amercia/New_York"));
+        /* TODO : instead of time of new york, need to get location information */
+        String str = dateFormat.format(calendar.getTime());
+
         for (int i = 0; i < rows; i++) {
             String onTime = sessionDurOnTime.getString(i);
             String offTime = sessionDurOffTime.getString(i);
@@ -114,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
             Date date_off = null;
             if (onTime != null) {
                 try {
-                    date_on = iso8601Format.parse(onTime);
+                    date_on = dateFormat.parse(onTime);
                     dates_on[i] = date_on;
                 } catch (ParseException e) {
                     date_on = null;
@@ -123,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
 
             if (offTime != null) {
                 try {
-                    date_off = iso8601Format.parse(offTime);
+                    date_off = dateFormat.parse(offTime);
                     dates_off[i] = date_off;
                 } catch (ParseException e) {
                     date_off = null;
@@ -140,6 +150,10 @@ public class MainActivity extends AppCompatActivity {
             long difference = date_off.getTime() - date_on.getTime();
             System.out.println(difference/1000);
         }
+
+
+
+
 
         // SQL Query to calculate total duration per day -> sum of each sessions
 
