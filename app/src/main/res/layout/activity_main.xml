@@ -68,7 +68,7 @@
 
     <Button
         android:text="stat"
-        android:layout_width="wrap_content"
+        android:layout_widthㅌ="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:id="@+id/button5"

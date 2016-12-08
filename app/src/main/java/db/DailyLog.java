@@ -33,6 +33,7 @@ public class DailyLog extends SQLiteOpenHelper {
                     ")";
 
     public DailyLog(Context context) {
+
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
