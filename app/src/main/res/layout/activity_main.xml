@@ -68,7 +68,7 @@
 
     <Button
         android:text="stat"
-        android:layout_widthㅌ="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:id="@+id/button5"
@@ -175,5 +175,7 @@
         android:textSize="30sp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
+
+
 
 </RelativeLayout>

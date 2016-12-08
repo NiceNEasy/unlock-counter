@@ -1,6 +1,6 @@
 package me.erickim.android.unlockcount;
 
-
+//android:icon="@mipmap/ic_launcher" -> manifest icon 디자인 경로임
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -49,11 +49,13 @@ public class MainActivity extends AppCompatActivity {
         // share button clicked
         share.setOnClickListener(bl);
 
-        DailyLog dailyLog = new DailyLog(null); //TODO: fix parameter
-        TotalLog totalLog = new TotalLog(null); //TODO: fix parameter
+        DailyLog dailyLog = new DailyLog(MainActivity.this);
+        TotalLog totalLog = new TotalLog(MainActivity.this);
 
+/*
         MergeData md = new MergeData(dailyLog, totalLog);
         new Thread(md).start();
+*/
 
     }
 
@@ -88,3 +90,9 @@ public class MainActivity extends AppCompatActivity {
 //        mergeHandler.removeCallbacks(mergeData);
 //    }
 }
+
+
+
+
+
+
