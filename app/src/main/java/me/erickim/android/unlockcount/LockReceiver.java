@@ -3,6 +3,9 @@ package me.erickim.android.unlockcount;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
+
+import db.CountLog;
 
 /**
  * Created by kimeric on 12/7/16.
@@ -10,19 +13,24 @@ import android.content.Intent;
 
 public class LockReceiver extends BroadcastReceiver {
 
-    public void insertDataToDaily(Intent intent) {
-        // TODO: gets triggered when phone gets locked/unlocked
-        intent.getAction().equals(Intent.ACTION_SCREEN_OFF);
+    private CountLog cl;
+
+    public LockReceiver(CountLog countLog) {
+        this.cl = countLog;
+    }
+
+    private void addToDB() {
+
     }
 
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent == null) return;
-        insertDataToDaily(intent);
-
         if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)){
             // Add data to db
-            // Basically means user just locked the phone
+            // Basically means user just unlocked the phone
+            // For now we just add a log message.
+            Log.d("LockReceiver", "ACTION_SCREEN_OFF");
         }
         // Check if the same row has ON, otherwise skip (probably first time)
 

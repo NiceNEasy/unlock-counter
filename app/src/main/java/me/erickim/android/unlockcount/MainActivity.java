@@ -1,6 +1,7 @@
 package me.erickim.android.unlockcount;
 
 //android:icon="@mipmap/ic_launcher" -> manifest icon 디자인 경로임
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,14 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import db.DailyLog;
-import db.TotalLog;
-
 
 public class MainActivity extends AppCompatActivity {
 
     // comment test
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         Button nextDay = (Button) findViewById(R.id.bt_next);           // button to show next day count
         Button share = (Button) findViewById(R.id.bt_share);            // button to share in facebook
 
-        
+
         //Button listener object
         ButtonListener bl = new ButtonListener(UC);
 
@@ -49,13 +46,23 @@ public class MainActivity extends AppCompatActivity {
         // share button clicked
         share.setOnClickListener(bl);
 
-        DailyLog dailyLog = new DailyLog(MainActivity.this);
-        TotalLog totalLog = new TotalLog(MainActivity.this);
+//        DailyLog dailyLog = new DailyLog(MainActivity.this);
+//        TotalLog totalLog = new TotalLog(MainActivity.this);
+        // CountLog countLog = new CountLog(MainActivity.this);
 
-/*
+        // UnlockReceiver ur = new UnlockReceiver(countLog);
+        // LockReceiver lr = new LockReceiver(countLog);
+        UnlockReceiver ur = new UnlockReceiver();
+        // long rows = ur.countRows();
+
+
+
+        /*
         MergeData md = new MergeData(dailyLog, totalLog);
         new Thread(md).start();
 */
+
+
 
     }
 
